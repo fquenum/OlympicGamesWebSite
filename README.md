@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+#  Olympic Games — React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Data visualization application for the Olympic Games,
+migrated from Angular to React to demonstrate proficiency in both frameworks.
 
-Currently, two official plugins are available:
+##  Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 18** + **TypeScript**
+- **Vite** — build tool
+- **React Router v6** — SPA navigation
+- **Recharts** — data visualization
+- **CSS Modules** — component-scoped styles
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Home page with a **PieChart** displaying medals per country
+- Click on a chart slice to navigate to a **country detail page**
+- Detail page with a **LineChart** showing medals per year
+- Statistics: number of participations, total medals, total athletes
+- Custom **404** page
+- **Loading / error** state handling
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+##  Architecture
+```
+src/
+├── components/        # Reusable components (PieChart, LineChart)
+├── pages/             # Routing components (Home, Detail, NotFound)
+├── core/
+│   ├── models/        # TypeScript interfaces
+│   └── hooks/         # Custom hooks (useOlympics)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+##  Getting Started
+```bash
+git clone https://github.com/fquenum/OlympicGamesWebSite.git
+cd OlympicGamesWebSite
+npm install
+npm run dev
 ```
+
+## 🔄 Angular → React Comparison
+
+| Concept | Angular | React |
+|---|---|---|
+| Reactive data | `Observable` + `AsyncPipe` | `useState` + `useEffect` |
+| Business logic | Injected `Service` | Custom hook |
+| Routing | `RouterModule` | `React Router` |
+| Scoped styles | `.component.scss` | `.module.css` |
+| Charts | `ngx-charts` | `Recharts` |
+
+## 📁 Original Angular Project
+
+👉 [See the Angular version]https://github.com/fquenum/P2_OlympicGamesWebSite
